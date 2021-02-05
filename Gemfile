@@ -29,9 +29,15 @@ gem 'turbolinks', '~> 5'
 # postgresql
 # bootstrap sass
 # user auth
+# image uploads
+# aws s3
+# image resizing
 gem 'pg', '~> 1.2', '>= 1.2.3'
 gem 'bootstrap-sass', '~> 3.4.1'
 gem 'devise'
+gem 'carrierwave', '~> 2.0'
+gem 'fog-aws'
+gem "mini_magick"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
@@ -42,8 +48,13 @@ group :development, :test do
 end
 
 group :development do
-  # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
+  # custom gems
+  gem 'listen'
+  gem "spring"
+  gem 'spring-watcher-listen'
+  # local ENV vars
+  gem "figaro"
 end
 
 group :test do

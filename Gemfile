@@ -29,7 +29,7 @@ gem 'turbolinks', '~> 5'
 # postgresql
 # bootstrap sass
 # user auth
-gem 'pg'
+gem 'pg', '~> 1.2', '>= 1.2.3'
 gem 'bootstrap-sass', '~> 3.4.1'
 gem 'devise'
 

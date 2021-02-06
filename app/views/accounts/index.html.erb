@@ -5,10 +5,18 @@
         <div class="insta-post">
 
           <div class="post-meta">
-            <%= post.account.username %>
+            <%= link_to image_tag(post.account.image.thumb.url, class: 'img-circle'), profile_path(post.account.username) %>
+            <%= link_to post.account.username, profile_path(post.account.username), class: 'text-dark' %>
           </div>
 
           <%= image_tag post.image.url, class: 'img img-fluid' %>
+
+          <div class="post-details">
+            <p><strong><%= post.total_likes %> likes</strong></p>
+            <p><strong><%= link_to post.account.username, profile_path(post.account.username), class: 'text-dark' %></strong></p>
+            <%= simple_format post.description %>
+            <small class="text-muted"><%= time_ago_in_words post.created_at %> ago</small>
+          </div>
 
         </div>
       <% end %>

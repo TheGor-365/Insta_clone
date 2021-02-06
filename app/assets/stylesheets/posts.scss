@@ -4,8 +4,18 @@
   font-weight: bold;
   padding: 10px;
   border: 1px solid #ddd;
+
+  img {
+    margin-right: 10px;
+  }
 }
 
 .insta-post {
   margin-bottom: 15px;
+}
+
+.post-details {
+  background: #fff;
+  padding: 15px;
+  border: 1px solid #ddd;
 }

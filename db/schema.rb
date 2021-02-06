@@ -35,10 +35,10 @@ ActiveRecord::Schema.define(version: 2021_02_05_085239) do
   create_table "posts", force: :cascade do |t|
     t.string "image"
     t.boolean "active"
-    t.bigint "accout_id"
+    t.bigint "account_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["accout_id"], name: "index_posts_on_accout_id"
+    t.index ["account_id"], name: "index_posts_on_account_id"
   end
 
 end

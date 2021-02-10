@@ -21,8 +21,21 @@
             <p><strong id="<%= post.id %>-likes"><%= post.total_likes_count %> likes</strong></p>
             <p><strong id="<%= post.id %>-comments"><%= link_to post.account.username, profile_path(post.account.username), class: 'text-dark' %></strong></p>
             <%= simple_format post.description %>
-            <small class="text-muted"><%= time_ago_in_words post.created_at %> ago</small>
+            <small class="text-muted"><%= time_ago_in_words post.created_at %> ago</small><br><br>
 
+            <%= render 'posts/comments', post: post %>
+
+          </div>
+          <div class="comment-box">
+            <%= form_for @comment do |f| %>
+              <%= f.hidden_field :post_id, value: post.id %>
+              <div class="input-group">
+                <%= f.text_field :comment, placeholder: 'Add comment here', class: 'form-control post-comment' %>
+                <div class="input-group-uppend">
+                  <%= f.submit 'Post', class: 'btn btn-success float-right' %>
+                </div>
+              </div>
+            <% end %>
           </div>
         </div>
       <% end %>

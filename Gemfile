@@ -37,7 +37,8 @@ gem 'bootstrap-sass', '~> 3.4.1'
 gem 'devise'
 gem 'carrierwave', '~> 2.0'
 gem 'fog-aws'
-gem "mini_magick"
+gem 'mini_magick'
+gem 'jquery-rails'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false

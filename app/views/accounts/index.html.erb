@@ -11,23 +11,23 @@
 
           <%= image_tag post.image.url, class: 'img img-fluid' %>
 
-          <div class="post-actions">
-            <span class="fas fa-heart post-like"></span>
-            <span class="fas fa-comment post-comment"></span>
-            <i class="fas fa-comments"></i>
-            <i class="fas fa-heart"></i>
-          </div>
-
           <div class="post-details">
-            <p><strong><%= post.total_likes %> likes</strong></p>
-            <p><strong><%= link_to post.account.username, profile_path(post.account.username), class: 'text-dark' %></strong></p>
+
+            <div class="post-actions">
+              <i class="fas fa-heart like-<%= post.id %> <%= 'active' if post_liked_by_user?(post.id) %> fa-2x post-like" data-id="<%= post.id %>"></i>
+              <i class="fas fa-comment fa-2x post-comment"></i>
+            </div>
+
+            <p><strong id="<%= post.id %>-likes"><%= post.total_likes_count %> likes</strong></p>
+            <p><strong id="<%= post.id %>-comments"><%= link_to post.account.username, profile_path(post.account.username), class: 'text-dark' %></strong></p>
             <%= simple_format post.description %>
             <small class="text-muted"><%= time_ago_in_words post.created_at %> ago</small>
-          </div>
 
+          </div>
         </div>
       <% end %>
     </div>
+
     <div class="col-4">
       <div class="account-summary">
         <p>
@@ -35,10 +35,13 @@
           <strong><%= current_account.username %></strong>
         </p>
         <p><%= current_account.full_name %></p>
+
         <div class="follower-suggestions">
           <%= link_to 'View All', '#', class: 'float-right' %>
           <p class="text-muted">Suggestions for you</p>
+          <%=  %>
         </div>
+
       </div>
     </div>
   </div>

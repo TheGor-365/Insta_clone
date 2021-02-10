@@ -31,3 +31,17 @@ body {
 .profile-posts {
   margin-top: 50px;
 }
+
+.btn-custom {
+  background: transparent;
+  border: 1px solid #ddd !important;
+  border-radius: 4px !important;
+}
+
+.btn-custom:hover {
+  background: #ddd !important;
+}
+
+.m-r-15 {
+  margin-right: 15px;
+}

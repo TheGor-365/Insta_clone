@@ -2,7 +2,8 @@
 
   <div class="comment">
     <strong><%= comment.account.username %></strong>
-    <%= comment.comment %>
+    <%= comment.comment %><br>
+    <small class="text-muted"><%= time_ago_in_words comment.created_at %> ago</small>
   </div>
 
 <% end %>

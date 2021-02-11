@@ -16,7 +16,7 @@
 
             <div class="post-actions">
               <i class="fas fa-heart like-<%= post.id %> <%= 'active' if post_liked_by_user?(post.id) %> fa-2x post-like" data-id="<%= post.id %>"></i>
-              
+
               <%= link_to post_path(post.id) do %>
                 <i class="fas fa-comment fa-2x post-comment"></i>
               <% end %>
@@ -27,7 +27,7 @@
             <%= simple_format post.description %>
             <small class="text-muted"><%= time_ago_in_words post.created_at %> ago</small><br><br>
 
-            <%= render 'posts/comments', post: post %>
+            <%= render 'posts/comments', post: post, comments: @comments = Comment.includes(:account).where(post_id: post.id) %>
 
           </div>
 

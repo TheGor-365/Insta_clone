@@ -7,7 +7,6 @@
           <div class="post-meta">
             <%= link_to image_tag(post.account.image.thumb.url, class: 'img-circle'), profile_path(post.account.username) %>
             <%= link_to post.account.username, profile_path(post.account.username), class: 'text-dark' %>
-
           </div>
 
           <%= image_tag post.image.url, class: 'img img-fluid' %>
@@ -15,10 +14,10 @@
           <div class="post-details">
 
             <div class="post-actions">
-              <i class="fas fa-heart like-<%= post.id %> <%= 'active' if post_liked_by_user?(post.id) %> fa-2x post-like" data-id="<%= post.id %>"></i>
+              <i class="fa fa-heart like-<%= post.id %> <%= 'active' if post_liked_by_user?(post.id) %> fa-2x post-like" data-id="<%= post.id %>"></i>
 
               <%= link_to post_path(post.id) do %>
-                <i class="fas fa-comment fa-2x post-comment"></i>
+                <i class="fa fa-comment fa-2x post-comment"></i>
               <% end %>
             </div>
 
@@ -49,7 +48,7 @@
 
     <div class="col-4">
       <div class="account-summary">
-        <p class="m-0">
+        <p>
           <%= link_to image_tag(current_account.image.thumb.url, class: 'img-circle float-left m-r-15'), profile_path(current_account.username) if current_account.image.present? %>
           <strong><%= current_account.username %></strong><br>
           <%= current_account.full_name %>

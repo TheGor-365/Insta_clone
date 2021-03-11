@@ -7,11 +7,11 @@ class LikesController < ApplicationController
     existing_like = Like.where(post_id: params[:post_id], account_id: current_account.id)
 
     respond_to do |format|
-      format.js {
+      format.js {        
         if existing_like.any?
           # like already exists for post by this user
           existing_like.first.destroy
-          @success false
+          @success = false
         elsif @like.save
           @success = true
         else

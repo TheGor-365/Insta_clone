@@ -9,13 +9,14 @@ gem 'sass-rails', '>= 6'
 gem 'webpacker', '~> 4.0'
 gem 'turbolinks', '~> 5'
 gem 'pg', '~> 1.2', '>= 1.2.3'
-gem 'devise'
 gem 'carrierwave', '~> 2.0'
 gem 'fog-aws'
 gem 'mini_magick'
-# gem 'omniauth-facebook', '~> 8.0'
-# gem "omniauth", "~> 1.9.1"
 gem 'bootsnap', '>= 1.4.2', require: false
+gem 'devise', github: 'heartcombo/devise', branch: 'ca-omniauth-2'
+gem 'omniauth-facebook'
+gem 'omniauth-rails_csrf_protection'
+
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

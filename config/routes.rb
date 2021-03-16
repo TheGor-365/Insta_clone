@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
 
-  devise_for :accounts
+  devise_for :accounts, controllers: { omniauth_callbacks: 'accounts/omniauth_callbacks' }
   root to: "public#homepage"
-
-  # devise_for :accounts, controllers: { omniauth_callbacks: 'accounts/omniauth_callbacks' }
 
   get '/dashboard' => 'accounts#index'
   get 'profile/:username' => 'accounts#profile', as: :profile
@@ -13,9 +11,5 @@ Rails.application.routes.draw do
 
   resources :posts, only: [:new, :create, :show]
   resources :comments, only: [:create]
-
-  devise_scope :account do
-    get "/accounts/sign_out" => "devise/sessions#destroy"
-  end
 
 end

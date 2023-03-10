@@ -6,16 +6,14 @@ ruby '2.5.8'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 gem 'puma', '~> 4.1'
 gem 'sass-rails', '>= 6'
-gem 'webpacker', '~> 4.0'
+gem 'webpacker'
 gem 'turbolinks', '~> 5'
 gem 'pg', '~> 1.2', '>= 1.2.3'
 gem 'carrierwave', '~> 2.0'
 gem 'fog-aws'
 gem 'mini_magick'
 gem 'bootsnap', '>= 1.4.2', require: false
-gem 'devise', github: 'heartcombo/devise', branch: 'ca-omniauth-2'
-gem 'omniauth-facebook'
-gem 'omniauth-rails_csrf_protection'
+gem 'devise'
 
 
 group :development, :test do

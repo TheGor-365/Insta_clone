@@ -1,7 +1,8 @@
 <h1 class="mt-5">Welcome to Insta Clone</h1>
 
-<p class="lead">Please register or sign in to continue</p>
 
-<%= link_to 'Sign up', new_account_registration_path, class: 'btn btn-success' %>
-<%= link_to 'Sign in', new_account_session_path, class: 'btn btn-secondary' %>
-<%= link_to 'Sign in with Facebook', account_facebook_omniauth_authorize_path, method: :post, class: 'btn btn-primary' %>
+<% if !current_account %>
+  <p class="lead">Please register or sign in to continue</p>
+  <%= link_to 'Sign up', new_account_registration_path, class: 'btn btn-success' %>
+  <%= link_to 'Sign up', new_account_registration_path, class: 'btn btn-success' %>
+<% end %>

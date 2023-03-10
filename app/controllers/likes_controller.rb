@@ -1,13 +1,13 @@
 class LikesController < ApplicationController
-  before_action :authenticate_account!
+  before_action :authenticate_person!
 
   def save_like
-    @like = Like.new(post_id: params[:post_id], account_id: current_account.id)
+    @like = Like.new(post_id: params[:post_id], person_id: current_person.id)
     @post_id = params[:post_id]
-    existing_like = Like.where(post_id: params[:post_id], account_id: current_account.id)
+    existing_like = Like.where(post_id: params[:post_id], person_id: current_person.id)
 
     respond_to do |format|
-      format.js {        
+      format.js {
         if existing_like.any?
           # like already exists for post by this user
           existing_like.first.destroy

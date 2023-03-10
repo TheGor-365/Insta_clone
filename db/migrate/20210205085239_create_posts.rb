@@ -3,7 +3,7 @@ class CreatePosts < ActiveRecord::Migration[6.0]
     create_table :posts do |t|
       t.string    :image
       t.boolean   :active
-      t.references :account
+      t.references :person
 
       t.timestamps
     end

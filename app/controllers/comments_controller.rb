@@ -1,9 +1,9 @@
 class CommentsController < ApplicationController
-  before_action :authenticate_account!
+  before_action :authenticate_person!
 
   def create
     @comment = Comment.new(comment_params)
-    @comment.account_id = current_account.id if account_signed_in?
+    @comment.person_id = current_person.id if person_signed_in?
 
     if @comment.save
       return_url = params[:comment][:return_to].present? ? post_path(@comment.post_id) : dashboard_path

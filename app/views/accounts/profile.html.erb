@@ -2,26 +2,26 @@
   <div class="row">
 
     <div class="col-4">
-      <%= profile_picture @account, 200 %>
+      <%= profile_picture @person, 200 %>
     </div>
 
     <div class="col-8 text-left">
       <div class="row">
         <div class="col-6">
-          <%= link_to 'Edit Profile', edit_account_registration_path, class: 'btn btn-muted btn-custom float-right' if can_edit_profile?(@account.id) %>
-          <h1><%= @account.full_name %></h1>
+          <%= link_to 'Edit Profile', edit_person_registration_path, class: 'btn btn-muted btn-custom float-right' if can_edit_profile?(@person.id) %>
+          <h1><%= @person.full_name %></h1>
         </div>
       </div>
 
       <div class="row profile-stats">
-        <div class="col-4"><%= @account.posts.count %> posts</div>
-        <div class="col-4"><%= @account.total_followers %> followers</div>
-        <div class="col-4"><%= @account.total_following %> following</div>
+        <div class="col-4"><%= @person.posts.count %> posts</div>
+        <div class="col-4"><%= @person.total_followers %> followers</div>
+        <div class="col-4"><%= @person.total_following %> following</div>
       </div>
 
-      <p><%= @account.full_name %></p>
-      <%= simple_format @account.description %>
-      <p><%= link_to "#{@account.website}", "https://#{@account.website}", target: :_blank if @account.website.present? %></p>
+      <p><%= @person.full_name %></p>
+      <%= simple_format @person.description %>
+      <p><%= link_to "#{@person.website}", "https://#{@person.website}", target: :_blank if @person.website.present? %></p>
     </div>
   </div>
 

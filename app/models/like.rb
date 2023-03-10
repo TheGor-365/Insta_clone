@@ -1,7 +1,7 @@
 class Like < ApplicationRecord
   belongs_to :post
-  belongs_to :account
-  validates_uniqueness_of :post_id, scope: :account_id
+  belongs_to :person
+  validates_uniqueness_of :post_id, scope: :person_id
 
   after_create :increase_post_like_counter
   after_destroy :decrease_post_like_counter

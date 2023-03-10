@@ -1,6 +1,4 @@
-class Account < ApplicationRecord
-
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+class Person < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :validatable

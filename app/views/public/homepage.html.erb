@@ -1,8 +1,8 @@
 <h1 class="mt-5">Welcome to Insta Clone</h1>
 
 
-<% if !current_account %>
+<% if !current_person %>
   <p class="lead">Please register or sign in to continue</p>
-  <%= link_to 'Sign up', new_account_registration_path, class: 'btn btn-success' %>
-  <%= link_to 'Sign up', new_account_registration_path, class: 'btn btn-success' %>
+  <%= link_to 'Sign up', new_person_registration_path, class: 'btn btn-success' %>
+  <%= link_to 'Sign up', new_person_registration_path, class: 'btn btn-success' %>
 <% end %>

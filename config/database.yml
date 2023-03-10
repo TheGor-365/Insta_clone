@@ -7,11 +7,11 @@ default: &default
 
 development:
   <<: *default
-  database: db/insta-development
+  database: insta
 
 test:
   <<: *default
-  database: db/insta-test
+  database: insta_test
 
 production:
   <<: *default

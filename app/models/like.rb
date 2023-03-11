@@ -1,19 +1,19 @@
 class Like < ApplicationRecord
-  belongs_to :post
-  belongs_to :person
-  validates_uniqueness_of :post_id, scope: :person_id
+  belongs_to :article
+  belongs_to :owner
+  validates_uniqueness_of :article_id, scope: :owner_id
 
-  after_create :increase_post_like_counter
-  after_destroy :decrease_post_like_counter
+  after_create :increase_article_like_counter
+  after_destroy :decrease_article_like_counter
 
   private
 
-  def increase_post_like_counter
-    Post.find(self.post_id).increment(:total_likes_count).save
+  def increase_article_like_counter
+    Article.find(self.article_id).increment(:total_likes_count).save
   end
 
-  def decrease_post_like_counter
-    Post.find(self.post_id).decrement(:total_likes_count).save
+  def decrease_article_like_counter
+    Article.find(self.article_id).decrement(:total_likes_count).save
   end
 
 end

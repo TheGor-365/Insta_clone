@@ -1,15 +1,15 @@
 Rails.application.routes.draw do
 
-  devise_for :persons
+  devise_for :owners
   root to: "public#homepage"
 
-  get '/dashboard' => 'persons#index'
-  get 'profile/:username' => 'persons#profile', as: :profile
-  get 'post/like/:post_id' => 'likes#save_like', as: :like_post
+  get '/dashboard' => 'owners#index'
+  get 'profile/:username' => 'owners#profile', as: :profile
+  get 'article/like/:article_id' => 'likes#save_like', as: :like_article
 
-  post 'follow/person' => 'persons#follow_person', as: :follow_person
+  post 'follow/owner' => 'owners#follow_owner', as: :follow_owner
 
-  resources :posts, only: [:new, :create, :show]
+  resources :articles, only: [:new, :create, :show]
   resources :comments, only: [:create]
 
 end

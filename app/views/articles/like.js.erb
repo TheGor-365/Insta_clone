@@ -1,0 +1,7 @@
+<% if @success == true %>
+  $(".like-<%= @article_id %>").addClass("active");
+<% else %>
+  $(".like-<%= @article_id %>").removeClass("active");
+<% end %>
+
+$("#article-<%= @article_id %>-likes").text("<%= @article_likes %> likes");

@@ -1,0 +1,45 @@
+<div class="container article-details">
+  <div class="row">
+
+    <div class="col-8">
+      <div class="insta-article">
+        <%= image_tag @article.image.url, class: 'img img-fluid' if @article.image.present? %>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <div class="article-meta">
+        <%= link_to (profile_picture @article.owner, 40), profile_path(@article.owner.username) %>
+        <%= link_to @article.owner.username, profile_path(@article.owner.username), class: 'text-dark' %>
+      </div>
+
+      <div class="article-details">
+        <div class="comments-feed">
+          <%= simple_format @article.description %>
+          <%= render 'articles/comments', article: @article, comments: @comments %>
+        </div>
+
+        <div class="article-actions">
+          <i class="fas fa-heart like-<%= @article.id %> <%= 'active' if article_liked_by_user?(@article.id) %> fa-2x article-like" data-id="<%= @article.id %>"></i>
+          <i class="fas fa-comment fa-2x article-comment" id="article-comment"></i>
+        </div>
+
+        <p><strong id="<%= @article.id %>-likes"><%= @article.total_likes_count %> likes</strong></p>
+        <small class="text-muted"><%= time_ago_in_words @article.created_at %> ago</small><br><br>
+      </div>
+
+      <div class="comment-box">
+        <%= form_for @comment do |f| %>
+          <%= f.hidden_field :article_id, value: @article.id %>
+          <%= f.hidden_field :return_to, value: "article" %>
+          <div class="input-group">
+            <%= f.text_field :comment, placeholder: 'Add comment here', class: 'form-control article-comment' %>
+            <div class="input-group-uppend">
+              <%= f.submit 'article', class: 'btn btn-success float-right' %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

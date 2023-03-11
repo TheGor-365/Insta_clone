@@ -1,4 +1,4 @@
-class Post < ApplicationRecord
+class Article < ApplicationRecord
 
   default_scope { order created_at: :desc }
   before_create :set_active
@@ -7,7 +7,7 @@ class Post < ApplicationRecord
 
   mount_uploader :image, ImageUploader
 
-  belongs_to :person
+  belongs_to :owner
   has_many :likes
   has_many :comments
 

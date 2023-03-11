@@ -1,15 +1,15 @@
 class LikesController < ApplicationController
-  before_action :authenticate_person!
+  before_action :authenticate_owner!
 
   def save_like
-    @like = Like.new(post_id: params[:post_id], person_id: current_person.id)
-    @post_id = params[:post_id]
-    existing_like = Like.where(post_id: params[:post_id], person_id: current_person.id)
+    @like = Like.new(article_id: params[:article_id], owner_id: current_owner.id)
+    @article_id = params[:article_id]
+    existing_like = Like.where(article_id: params[:article_id], owner_id: current_owner.id)
 
     respond_to do |format|
       format.js {
         if existing_like.any?
-          # like already exists for post by this user
+          # like already exists for article by this user
           existing_like.first.destroy
           @success = false
         elsif @like.save
@@ -18,8 +18,8 @@ class LikesController < ApplicationController
           @success = false
         end
 
-        @post_likes = Post.find(@post_id).total_likes_count
-        render "posts/like"
+        @article_likes = Article.find(@article_id).total_likes_count
+        render "articles/like"
       }
     end
   end

@@ -1,0 +1,66 @@
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+      <% @articles.each do |article| %>
+        <div class="insta-article">
+
+          <div class="article-meta">
+            <%= link_to (profile_picture article.owner, 40), profile_path(article.owner.username) %>
+            <%= link_to article.owner.username, profile_path(article.owner.username), class: 'text-dark' %>
+          </div>
+
+          <%= image_tag article.image.url, class: 'img img-fluid' %>
+
+          <div class="article-details">
+
+            <div class="article-actions">
+              <i class="fa fa-heart like-<%= article.id %> <%= 'active' if article_liked_by_user?(article.id) %> fa-2x article-like" data-id="<%= article.id %>"></i>
+
+              <%= link_to article_path(article.id) do %>
+                <i class="fa fa-comment fa-2x article-comment"></i>
+              <% end %>
+            </div>
+
+            <p><strong id="<%= article.id %>-likes"><%= article.total_likes_count %> likes</strong></p>
+            <p><strong id="<%= article.id %>-comments"><%= link_to article.owner.username, profile_path(article.owner.username), class: 'text-dark' %></strong></p>
+            <%= simple_format article.description %>
+            <small class="text-muted"><%= time_ago_in_words article.created_at %> ago</small><br><br>
+
+            <%= render 'articles/comments', article: article, comments: @comments = Comment.includes(:owner).where(article_id: article.id) %>
+
+          </div>
+
+          <div class="comment-box">
+            <%= form_for @comment do |f| %>
+              <%= f.hidden_field :article_id, value: article.id %>
+              <div class="input-group">
+                <%= f.text_field :comment, placeholder: 'Add comment here', class: 'form-control article-comment' %>
+                <div class="input-group-uppend">
+                  <%= f.submit 'article', class: 'btn btn-success float-right' %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+
+        </div>
+      <% end %>
+    </div>
+
+    <div class="col-4">
+      <div class="owner-summary">
+        <p>
+          <%= link_to image_tag(current_owner.image.thumb.url, class: 'img-circle float-left m-r-15'), profile_path(current_owner.username) if current_owner.image.present? %>
+          <strong><%= current_owner.username %></strong><br>
+          <%= current_owner.full_name %>
+        </p>
+
+        <div class="follower-suggestions">
+          <%= link_to 'View All', '#', class: 'float-right' %>
+          <p class="text-muted">Suggestions for you</p>
+          <%= render 'owners/follower_suggestions' %>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

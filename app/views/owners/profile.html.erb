@@ -14,7 +14,7 @@
       </div>
 
       <div class="row profile-stats">
-        <div class="col-4"><%= @owner.articles.count %> articles</div>
+        <div class="col-4"><%= @owner.letters.count %> letters</div>
         <div class="col-4"><%= @owner.total_followers %> followers</div>
         <div class="col-4"><%= @owner.total_following %> following</div>
       </div>
@@ -25,15 +25,15 @@
     </div>
   </div>
 
-  <div class="row profile-articles">
-    <% @articles.each do |article| %>
+  <div class="row profile-letters">
+    <% @letters.each do |letter| %>
       <div class="col-4">
-        <div class="insta-article article-squere" style="background: url(<%= article.image.url %>) no-repeat center top">
-          <%= link_to article_path(article) do %>
-            <div class="article-stats">
+        <div class="insta-letter letter-squere" style="background: url(<%= letter.image.url %>) no-repeat center top">
+          <%= link_to letter_path(letter) do %>
+            <div class="letter-stats">
               <div class="inner">
-                <i class="fa fa-heart"></i> <%= article.total_likes_count %>
-                <i class="fa fa-comment m-l-15"></i> <%= article.total_comments_count %>
+                <i class="fa fa-heart"></i> <%= letter.total_likes_count %>
+                <i class="fa fa-comment m-l-15"></i> <%= letter.total_comments_count %>
               </div>
             </div>
           <% end %>

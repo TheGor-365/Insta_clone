@@ -1,5 +1,4 @@
-class Article < ApplicationRecord
-
+class Letter < ApplicationRecord
   default_scope { order created_at: :desc }
   before_create :set_active
 
@@ -16,5 +15,4 @@ class Article < ApplicationRecord
   def set_active
     self.active = true
   end
-
 end

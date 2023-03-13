@@ -8,7 +8,7 @@
 
       <div class="col-sm-9 col-lg-10 mb-2">
 
-        <%= form_tag follow_owner_path, method: :article, class: 'float-right' do %>
+        <%= form_tag follow_owner_path, method: :letter, class: 'float-right' do %>
           <%= hidden_field_tag :follow_id, owner.id %>
           <%= submit_tag 'Follow', class: 'btn btn-info btn-sm' %>
         <% end %>

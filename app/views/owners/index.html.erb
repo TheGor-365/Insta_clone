@@ -1,42 +1,42 @@
 <div class="container">
   <div class="row">
     <div class="col-8">
-      <% @articles.each do |article| %>
-        <div class="insta-article">
+      <% @letters.each do |letter| %>
+        <div class="insta-letter">
 
-          <div class="article-meta">
-            <%= link_to (profile_picture article.owner, 40), profile_path(article.owner.username) %>
-            <%= link_to article.owner.username, profile_path(article.owner.username), class: 'text-dark' %>
+          <div class="letter-meta">
+            <%= link_to (profile_picture letter.owner, 40), profile_path(letter.owner.username) %>
+            <%= link_to letter.owner.username, profile_path(letter.owner.username), class: 'text-dark' %>
           </div>
 
-          <%= image_tag article.image.url, class: 'img img-fluid' %>
+          <%= image_tag letter.image.url, class: 'img img-fluid' %>
 
-          <div class="article-details">
+          <div class="letter-details">
 
-            <div class="article-actions">
-              <i class="fa fa-heart like-<%= article.id %> <%= 'active' if article_liked_by_user?(article.id) %> fa-2x article-like" data-id="<%= article.id %>"></i>
+            <div class="letter-actions">
+              <i class="fa fa-heart like-<%= letter.id %> <%= 'active' if letter_liked_by_user?(letter.id) %> fa-2x letter-like" data-id="<%= letter.id %>"></i>
 
-              <%= link_to article_path(article.id) do %>
-                <i class="fa fa-comment fa-2x article-comment"></i>
+              <%= link_to letter_path(letter.id) do %>
+                <i class="fa fa-comment fa-2x letter-comment"></i>
               <% end %>
             </div>
 
-            <p><strong id="<%= article.id %>-likes"><%= article.total_likes_count %> likes</strong></p>
-            <p><strong id="<%= article.id %>-comments"><%= link_to article.owner.username, profile_path(article.owner.username), class: 'text-dark' %></strong></p>
-            <%= simple_format article.description %>
-            <small class="text-muted"><%= time_ago_in_words article.created_at %> ago</small><br><br>
+            <p><strong id="<%= letter.id %>-likes"><%= letter.total_likes_count %> likes</strong></p>
+            <p><strong id="<%= letter.id %>-comments"><%= link_to letter.owner.username, profile_path(letter.owner.username), class: 'text-dark' %></strong></p>
+            <%= simple_format letter.description %>
+            <small class="text-muted"><%= time_ago_in_words letter.created_at %> ago</small><br><br>
 
-            <%= render 'articles/comments', article: article, comments: @comments = Comment.includes(:owner).where(article_id: article.id) %>
+            <%= render 'letters/comments', letter: letter, comments: @comments = Comment.includes(:owner).where(letter_id: letter.id) %>
 
           </div>
 
           <div class="comment-box">
             <%= form_for @comment do |f| %>
-              <%= f.hidden_field :article_id, value: article.id %>
+              <%= f.hidden_field :letter_id, value: letter.id %>
               <div class="input-group">
-                <%= f.text_field :comment, placeholder: 'Add comment here', class: 'form-control article-comment' %>
+                <%= f.text_field :comment, placeholder: 'Add comment here', class: 'form-control letter-comment' %>
                 <div class="input-group-uppend">
-                  <%= f.submit 'article', class: 'btn btn-success float-right' %>
+                  <%= f.submit 'letter', class: 'btn btn-success float-right' %>
                 </div>
               </div>
             <% end %>

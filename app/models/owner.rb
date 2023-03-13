@@ -5,7 +5,7 @@ class Owner < ApplicationRecord
 
   mount_uploader :image, ImageUploader
 
-  has_many :articles
+  has_many :letters
   has_many :likes
 
   def full_name
